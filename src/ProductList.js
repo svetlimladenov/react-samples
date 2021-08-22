@@ -2,29 +2,34 @@ import React from "react";
 import "./product-list.css";
 import "./App.css";
 import Product from "./product/Product";
-import ProductPrice from "./product-price/ProductPrice";
+import Timer from "./timer/Timer";
 
 class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      counter: this.props.counter
+      timerToggled: true
     };
+
+    this.handleTimerToggle = this.handleTimerToggle.bind(this);
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({ counter: this.state.counter + 1 });
-    }, 1000);
+  handleTimerToggle() {
+    this.setState((state) => {
+      return {
+        timerToggled: !state.timerToggled
+      };
+    });
   }
 
   render() {
     const { product } = this.props;
-    const { counter } = this.state;
+
     return (
       <div className="container">
-        <Product product={product} Price={ProductPrice} />
-        {counter}
+        <Product product={product} />
+        <input type="checkbox" onChange={this.handleTimerToggle} />
+        {this.state.timerToggled && <Timer />}
       </div>
     );
   }
