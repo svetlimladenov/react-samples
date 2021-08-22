@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   const { image, title, brand, price, id } = props;
 
   return (
-    <div className="product-title">
+    <div className="product-tile">
       <img src={image} alt={title} className="product-image" />
       <div>
         <span className="product-brand">{brand}</span>
