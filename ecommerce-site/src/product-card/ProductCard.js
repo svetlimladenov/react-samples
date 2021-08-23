@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import styles from "./styles.module.css";
 
 import PropTypes from "prop-types";
 import ProductPrice from "../product-price/ProductPrice";
@@ -8,11 +8,11 @@ const ProductCard = (props) => {
   const { image, title, brand, price, id } = props;
 
   return (
-    <div className="product-tile">
-      <img src={image} alt={title} className="product-image" />
+    <div className={styles.container}>
+      <img src={image} alt={title} className={styles["product-image"]} />
       <div>
-        <span className="product-brand">{brand}</span>
-        <span className="product-title">{title}</span>
+        <span className={styles["product-brand"]}>{brand}</span>
+        <span className={styles["product-title"]}>{title}</span>
         <ProductPrice price={price} />
       </div>
     </div>
